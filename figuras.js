@@ -10,10 +10,16 @@ function areaCuadrado(lado) {
 }
 console.groupEnd();
 
+// Codigo triangulo
 console.group("Triangulo");
 
 function perimetroTriangulo(lado1, lado2, base){
     return Number(lado1) + Number(lado2) + Number(base);
+}
+
+function alturaTriangulo(lado1, base){
+    const altura = Math.sqrt(lado1 ** 2 - (base/2)**2);
+    return altura;
 }
 
 function areaTriangulo(base, altura){
@@ -90,6 +96,55 @@ function calcularAreaTriangulo(){
 
     const area = areaHeron(l1, l2, l3);
     alert(area);
+}
+
+function calcularAlturaIsoceles(){
+    const input1 = document.getElementById("inputTriangulo1");
+    const input2 = document.getElementById("inputTriangulo2");
+    const input3 = document.getElementById("inputTriangulo3");
+
+    const l1 = input1.value;
+    const l2 = input2.value;
+    const l3 = input3.value;
+
+    if (l1 == l2){
+        alert(alturaTriangulo(l1, l3));
+
+    } else if (l2 == l3){
+        alert(alturaTriangulo(l2, l1));
+
+    } else if (l1 == l3){
+        alert(alturaTriangulo(l1, l2));
+
+    } else {
+        alert("El triangulo especificado no es isoceles.")
+    }
+}
+
+function calcularAreaIsoceles(){
+    const input1 = document.getElementById("inputTriangulo1");
+    const input2 = document.getElementById("inputTriangulo2");
+    const input3 = document.getElementById("inputTriangulo3");
+
+    const l1 = input1.value;
+    const l2 = input2.value;
+    const l3 = input3.value;
+
+    if (l1 == l2){
+        const altura = alturaTriangulo(l1, l3);
+        alert(areaTriangulo(l3, altura))
+
+    } else if (l2 == l3){
+        const altura = alturaTriangulo(l2, l1);
+        alert(areaTriangulo(l1, altura))
+
+    } else if (l1 == l3){
+        const altura = alturaTriangulo(l1, l2);
+        alert(areaTriangulo(l2, altura))
+
+    } else {
+        alert("El triangulo especificado no es isoceles.")
+    }
 }
 
 function calcularAreaCirculo() {
